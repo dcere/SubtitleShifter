@@ -1,5 +1,5 @@
 # Description:
-#   Shifts the times of a srt file
+#   Shifts the times in a SubRip file (.srt file)
 #
 # Synopsis:
 #   shifter.rb <input-file> <shift>
@@ -10,11 +10,15 @@
 #
 # Examples:
 #   _$: ruby shifter.rb test.srt 2500
+#   _$: ruby shifter.rb test.srt -2500
 #
 #
 # Author:
 #   David Ceresuela
 
+
+# SubRip format
+#
 # According to wikipedia this is the format of SubRip (.srt) files
 #  1
 #  00:00:20,000 --> 00:00:24,400
@@ -29,9 +33,9 @@
 class MyTime
 
   @@regex = /([0-9]{2}):([0-9]{2}):([0-9]{2}),([0-9]{3})/
-  @@h_ms = 3600000
-  @@m_ms = 60000
-  @@s_ms = 1000
+  @@h_ms = 3600000  # An hour is 3600000 milliseconds
+  @@m_ms = 60000    # A minute is 60000 milliseconds
+  @@s_ms = 1000     # A second is 1000 milliseconds
 
 
   def initialize(time)
@@ -93,7 +97,7 @@ output_file_name = input_file_name + "(shifted)"
 input_file = File.open(input_file_name, "r")
 output_file = File.open(output_file_name, "w")
 
-# Shift
+# Get the shift
 shift = ARGV[1].to_i
 
 # Shift the file

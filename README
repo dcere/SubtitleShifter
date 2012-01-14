@@ -1,0 +1,14 @@
+Subtitle Shifter
+----------------
+
+Description:
+  Shifts the times in a SubRip file
+
+Use:
+  _$: ruby shifter.rb file.srt 2500
+  This will shift 2500 ms the times in the file.srt file. Outptut will be saved
+  on file.srt(shifted)
+
+
+
+Author: David Ceresuela
